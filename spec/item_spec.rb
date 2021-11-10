@@ -17,4 +17,32 @@ describe Item do
       expect(@item.archived).to eql false
     end
   end
+
+  describe '#add_genre' do
+    it 'should add a genre' do
+      @item.add_genre Genre.new('salsa')
+      expect(@item.genre).to be_an_instance_of Genre
+    end
+  end
+
+  describe '#add_author' do
+    it 'should add an author' do
+      @item.add_author Author.new('gabriel', 'garcia marquez')
+      expect(@item.author).to be_an_instance_of Author
+    end
+  end
+
+  describe '#add_source' do
+    it 'should add a source' do
+      @item.add_source Source.new('friend')
+      expect(@item.source).to be_an_instance_of Source
+    end
+  end
+
+  describe '#add_label' do
+    it 'should add a label' do
+      @item.add_label Label.new('microverse', 'red')
+      expect(@item.label).to be_an_instance_of Label
+    end
+  end
 end
