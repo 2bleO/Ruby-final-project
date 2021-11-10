@@ -1,5 +1,5 @@
 class Item
-  attr_reader :genre, :author, :game, :label, :archived
+  attr_reader :genre, :author, :game, :label, :archived, :source
   attr_accessor :id
 
   def initialize(publish_date)
@@ -17,7 +17,7 @@ class Item
   def add_label()
   end
 
-  def add_game()
+  def add_source()
   end
 
   def move_to_archive
