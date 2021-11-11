@@ -6,10 +6,11 @@ require_relative 'source'
 require 'json'
 
 class Storage
-  attr_reader :books, :genres, :authors, :labels, :sources, :albums
+  attr_reader :books, :genres, :authors, :labels, :sources, :albums, :games
   def initialize
     @books = []
     @albums = []
+    @games = []
     @genres = []
     @authors = []
     @labels = []
@@ -30,6 +31,14 @@ class Storage
 
   def list_albums
     @albums.each { |album| puts album }
+  end
+
+  def add_game(game)
+    @games.push(game)
+  end
+
+  def list_games
+    @games.each { |game| puts game }
   end
 
   def add_genre(genre)

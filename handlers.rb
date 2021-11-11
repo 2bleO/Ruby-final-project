@@ -1,5 +1,6 @@
 require_relative 'book'
 require_relative 'music_album'
+require_relative 'game'
 require_relative 'label'
 require_relative 'author'
 require_relative 'genre'
@@ -79,6 +80,23 @@ module Handlers
     add_item_details(album)
     @data.add_album(album)
     print 'album added correctly'
+    puts
+  end
+
+  def add_game
+    print 'Publish date? (Year): '
+    publish_date = Time.new(gets.chomp)
+
+    print 'Is game multiplayer? [y/n]: '
+    multiplayer = gets.chomp.downcase == 'y'
+
+    print 'Last played at? (year): '
+    last_played_at = Time.new(gets.chomp)
+
+    game = Game.new(publish_date, last_played_at, multiplayer)
+    add_item_details(game)
+    @data.add_game(game)
+    print 'Game added correctly'
     puts
   end
 end
