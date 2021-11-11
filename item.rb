@@ -32,6 +32,22 @@ class Item
     @archived = can_be_archived?
   end
 
+  def to_s
+    "ID: #{@id}, Publish Date: #{@publish_date.strftime('%Y/%m/%d')}, Author: #{@author}, \
+Genre: #{@genre}, Source: #{@source}, Label: #{@label}"
+  end
+
+  def to_json(_args)
+    {
+      'id' => @id,
+      'publish_date' => @publish_date.strftime('%Y/%m/%d'),
+      'author_id' => @author.id,
+      'genre_id' => @genre.id,
+      'source_id' => @source.id,
+      'label_id' => @label.id
+    }
+  end
+
   private
 
   def can_be_archived?
