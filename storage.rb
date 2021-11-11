@@ -70,6 +70,7 @@ class Storage
     save_file(@labels, 'labels.json')
     save_file(@sources, 'sources.json')
     save_file(@books, 'books.json')
+    save_file(@albums, 'albums.json')
   end
 
   def save_file(data, file_name)
