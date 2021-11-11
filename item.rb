@@ -33,14 +33,14 @@ class Item
   end
 
   def to_s
-    "ID: #{@id}, Publish Date: #{@publish_date.strftime('%Y/%m/%d')}, Author: #{@author}, \
+    "ID: #{@id}, Publish Date: #{@publish_date}, Author: #{@author}, \
 Genre: #{@genre}, Source: #{@source}, Label: #{@label}"
   end
 
   def to_json(_args)
     {
       'id' => @id,
-      'publish_date' => @publish_date.strftime('%Y/%m/%d'),
+      'publish_date' => @publish_date,
       'author_id' => @author.id,
       'genre_id' => @genre.id,
       'source_id' => @source.id,

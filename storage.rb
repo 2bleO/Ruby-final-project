@@ -3,7 +3,6 @@ require_relative 'book'
 require_relative 'label'
 require_relative 'author'
 require_relative 'source'
-
 require 'json'
 
 class Storage
@@ -66,5 +65,43 @@ class Storage
 
   def save_file(data, file_name)
     File.write(file_name, JSON.generate(data)) if data.any?
+  end
+
+  def load_data
+    @books = load_file('books.json')
+
+    @genres = load_file('genres.json')
+    @authors = load_file('authors.json')
+    @labels = load_file('labels.json')
+    @sources = load_file('sources.json')
+
+    load_relationships(@books, 'books.json')
+  end
+
+  def load_file(file)
+    if File.exist? file
+      JSON.parse(File.read(file), create_additions: true)
+    else
+      []
+    end
+  end
+
+  def load_relationships(items, file_name)
+    return unless File.exist?(file_name)
+
+    items_json = JSON.parse(File.read(file_name))
+
+    items_json.each_with_index do |item_json, index|
+      genre = @genres.detect { |genre_json| genre_json.id == item_json['genre_id'] }
+      author = @authors.detect { |author_json| author_json.id == item_json['author_id'] }
+      label = @labels.detect { |label_json| label_json.id == item_json['label_id'] }
+      source = @sources.detect { |source_json| source_json.id == item_json['source_id'] }
+
+      item = items[index]
+      item.add_genre(genre)
+      item.add_author(author)
+      item.add_label(label)
+      item.add_source(source)
+    end
   end
 end

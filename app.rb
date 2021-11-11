@@ -12,6 +12,7 @@ class App
 
   def run
     puts 'Welcome to the Catalog of things'
+    @data.load_data
 
     loop do
       puts

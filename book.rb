@@ -1,4 +1,5 @@
 require_relative 'item'
+
 class Book < Item
   def initialize(publish_date, publisher, cover_state)
     super(publish_date)
@@ -23,7 +24,7 @@ class Book < Item
   end
 
   def self.json_create(object)
-    book = new(object['publisher'], object['cover_state'], Time.parse(object['publish_date']))
+    book = new(Time.new(object['publish_date']), object['publisher'], object['cover_state'])
     book.id = object['id']
     book
   end
