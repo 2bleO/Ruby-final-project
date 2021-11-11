@@ -1,4 +1,5 @@
 require_relative 'book'
+require_relative 'music_album'
 require_relative 'label'
 require_relative 'author'
 require_relative 'genre'
@@ -21,7 +22,7 @@ module Handlers
     when '1'
       @data.list_books
     when '2'
-      @data.list_music_albums
+      @data.list_albums
     when '3'
       @data.list_games
     when '4'
@@ -64,6 +65,20 @@ module Handlers
     add_item_details(book)
     @data.add_book(book)
     print 'Book added correctly'
+    puts
+  end
+
+  def add_music_album
+    print 'Publish date? (Year): '
+    publish_date = Time.new(gets.chomp)
+
+    print 'Is album on Spotify? [y/n]: '
+    on_spotify = gets.chomp.downcase == 'y'
+
+    album = MusicAlbum.new(publish_date, on_spotify)
+    add_item_details(album)
+    @data.add_album(album)
+    print 'album added correctly'
     puts
   end
 end
