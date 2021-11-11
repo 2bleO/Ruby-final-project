@@ -23,7 +23,6 @@ class MusicAlbum < Item
     music_album
   end
 
-
   private
 
   def can_be_archived?

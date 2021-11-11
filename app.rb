@@ -20,6 +20,7 @@ class App
 
       option = gets.chomp
       break if option == '3'
+
       options_handler(option)
     end
 

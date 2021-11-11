@@ -17,7 +17,7 @@ describe Genre do
       item2 = Item.new Time.now
       @genre.add_item item1
       @genre.add_item item2
-      expect(item1.id).not_to be ==(item2.id)
+      expect(item1.id).not_to be == (item2.id)
     end
   end
 end

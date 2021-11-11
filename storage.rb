@@ -7,6 +7,7 @@ require 'json'
 
 class Storage
   attr_reader :books, :genres, :authors, :labels, :sources, :albums, :games
+
   def initialize
     @books = []
     @albums = []

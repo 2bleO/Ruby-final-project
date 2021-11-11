@@ -17,6 +17,7 @@ module Handlers
       puts 'invalid valid option'
     end
   end
+  # rubocop:disable Metrics/CyclomaticComplexity
 
   def list_items_handler(option)
     case option
@@ -39,6 +40,7 @@ module Handlers
     end
   end
 
+  # rubocop:enable Metrics/CyclomaticComplexity
   def add_items_handler(option)
     case option
     when '1'

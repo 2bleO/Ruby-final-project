@@ -17,7 +17,7 @@ describe Author do
       item2 = Item.new Time.now
       @author.add_item item1
       @author.add_item item2
-      expect(item1.id).not_to be ==(item2.id)
+      expect(item1.id).not_to be == (item2.id)
     end
   end
 end
