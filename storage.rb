@@ -90,6 +90,7 @@ class Storage
   def load_data
     @books = load_file('books.json')
     @albums = load_file('albums.json')
+    @games = load_file('games.json')
 
     @genres = load_file('genres.json')
     @authors = load_file('authors.json')
@@ -98,6 +99,7 @@ class Storage
 
     load_relationships(@books, 'books.json')
     load_relationships(@albums, 'albums.json')
+    load_relationships(@games, 'games.json')
   end
 
   def load_file(file)
