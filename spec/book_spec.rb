@@ -16,17 +16,20 @@ describe Book do
   describe '#can_be_archived?' do
     context 'when 10 years old or cover is bad' do
       it 'can be archived' do
-        expect(@book1.can_be_archived?).to be_truthy
+        @book1.move_to_archive
+        expect(@book1.archived).to be_truthy
       end
 
       it 'can be archived' do
-        expect(@book2.can_be_archived?).to be_truthy
+        @book2.move_to_archive
+        expect(@book2.archived).to be_truthy
       end
     end
 
     context 'when less than 10 years and cover is good' do
       it 'cannot be archived' do
-        expect(@book3.can_be_archived?).to be_falsey
+        @book3.move_to_archive
+        expect(@book3.archived).to be_falsey
       end
     end
   end

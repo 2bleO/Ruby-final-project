@@ -7,10 +7,6 @@ class Book < Item
     @cover_state = cover_state
   end
 
-  def can_be_archived?
-    super || @cover_state == 'bad'
-  end
-
   def to_s
     "[Book] Publisher: \"#{@publisher}\", Cover State: #{@cover_state}, #{super}"
   end
@@ -27,5 +23,11 @@ class Book < Item
     book = new(Time.new(object['publish_date']), object['publisher'], object['cover_state'])
     book.id = object['id']
     book
+  end
+
+  private
+
+  def can_be_archived?
+    super || @cover_state == 'bad'
   end
 end
