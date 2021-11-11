@@ -22,6 +22,7 @@ class App
       options_handler(option)
     end
 
+    @data.save_data
     puts 'Thank you for using this app!'
   end
 

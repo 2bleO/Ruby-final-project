@@ -15,7 +15,7 @@ module AddDetails
     if option == 'n'
       print 'Genre name: '
       genre = Genre.new(gets.chomp)
-      @data.genres.push(genre)
+      @data.add_genre(genre)
     else
       genre = @data.genres[option.to_i]
     end
@@ -36,7 +36,7 @@ module AddDetails
       last_name = gets.chomp
 
       author = Author.new(first_name, last_name)
-      @data.authors.push(author)
+      @data.add_author(author)
     else
       author = @data.authors[option.to_i]
     end
@@ -52,9 +52,9 @@ module AddDetails
     if option == 'n'
       print 'Source: '
       source = Source.new(gets.chomp)
-      @data.sources.push(source)
+      @data.add_source(source)
     else
-      source = @sources[option.to_i]
+      source = @data.sources[option.to_i]
     end
     item.add_source(source)
   end
@@ -73,7 +73,7 @@ module AddDetails
       color = gets.chomp
 
       label = Label.new(title, color)
-      @data.labels.push(label)
+      @data.add_label(label)
     else
       label = @data.labels[option.to_i]
     end
